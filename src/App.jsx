@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./components/Card";
+import { FaDiscord } from "react-icons/fa";
 
 function App() {
+
+  const [text, setText] = useState("Hello");
+  const [data, setData] = useState([])
 
   const cards = [
     {
@@ -24,29 +28,44 @@ function App() {
     },
   ];
 
-  // const [data, setData] = useState([])
+  const getData = async () => {
+    const data = await fetch("https://fakestoreapi.in/api/products");
+    const resData = await data.json()
+    setData(resData.products);
+  }
 
-  // const fun = async () => {
-  //   fetch('svbgfndfg')
-  //     .then(res => {
-  //     setData(res.data)
-      
-  //   })
-  // }
+  useEffect(() => {
+    console.log(text);
+  }, [text])
   
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    console.log(data);
+  },[data])
+
 
   return (
-    <div className="h-screen w-full bg-zinc-800 flex justify-center items-center gap-3">
-      {cards.map((item, index) => {
+    <div className="h-screen w-full bg-zinc-800 flex flex-wrap justify-center items-center gap-10 p-10">
+      <FaDiscord size={60} />
+      {data?.map((item, index) => {
         return (
           <Card
             key={index}
-            imageUrl={item.imageUrl}
-            name={item.name}
-            des={item.des}
+            imageUrl={item.image}
+            name={item.brand}
+            des={item.category}
           />
         );
       })}
+      <button
+        onClick={() => setText("react")}
+        className="w-fit h-fit p-1 bg-red-400"
+      >
+        Change
+      </button>
     </div>
   );
 }
