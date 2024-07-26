@@ -2,7 +2,7 @@ import React from 'react'
 
 function Card({ imageUrl ,name, des}) {
   return (
-    <div className="h-[300px] w-[250px] bg-zinc-100 rounded-lg overflow-hidden">
+    <div className="h-[300px] w-[250px] bg-pink-200 rounded-lg overflow-hidden">
       <img
         className="h-[60%] w-full object-cover "
         src={imageUrl}
