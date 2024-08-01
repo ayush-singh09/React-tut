@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ManualCard from "../components/ManualCard";
+import Navbar from "../Navbar";
 
 function ShowDynamicCards() {
   const [name, setName] = useState("");
@@ -40,6 +41,7 @@ function ShowDynamicCards() {
           />
         );
       })}
+
       <div className="flex flex-col gap-3 p-3">
         <input
           onChange={(e) => setName(e.target.value)}

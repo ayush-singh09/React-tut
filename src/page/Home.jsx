@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ManualCard from "../components/ManualCard";
+import Navbar from "../Navbar";
 
 function Home() {
   const [text, setText] = useState("");
